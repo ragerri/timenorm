@@ -371,11 +371,11 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| cierto [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| poco [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| mucho [Unit] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| diversos [Unit:Plural] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| diversas [Unit:Plural] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| muchas [Unit:Plural] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| varios [Unit:Plural] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| varias [Unit:Plural] ||| Unspecified [Unit] ||| 1.0
+[Period] ||| diversos [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
+[Period] ||| diversas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
+[Period] ||| muchas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
+[Period] ||| varios [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
+[Period] ||| varias [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 [Period] ||| ultimos [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 [Period] ||| ultimas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 [Period] ||| estos ultimos [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
@@ -782,10 +782,10 @@ TimeSpan:Regular] ||| mas tarde en [TimeSpan:Regular] ||| WithModifier [TimeSpan
 [TimeSpanSet] ||| todos los [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
 [TimeSpanSet] ||| todas las [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
 // e.g. "Tuesday nights"
-[TimeSpanSet] ||| los [FieldValue:Partial] por el [FieldValue:PartOfDay] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
-[TimeSpanSet] ||| los [FieldValue:Partial] por la [FieldValue:PartOfDay] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
-[TimeSpanSet] ||| las [FieldValue:Partial] por el [FieldValue:PartOfDay] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
-[TimeSpanSet] ||| las [FieldValue:Partial] por la [FieldValue:PartOfDay] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
+[TimeSpanSet] ||| los [FieldValue:Partial] por el [FieldValue:Unspecified] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
+[TimeSpanSet] ||| los [FieldValue:Partial] por la [FieldValue:Unspecified] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
+[TimeSpanSet] ||| las [FieldValue:Partial] por el [FieldValue:Unspecified] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
+[TimeSpanSet] ||| las [FieldValue:Partial] por la [FieldValue:Unspecified] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
 // e.g. "the past three summers"
 [TimeSpanSet] ||| los ultimos [Int] [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0
 [TimeSpanSet] ||| las ultimas [Int] [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0

@@ -29,6 +29,13 @@ object TemporalExpressionParser {
     tokenize=ItalianTokenizer)
 
   /**
+   * The built-in Spanish time parser.
+   */
+  def es(): TemporalExpressionParser = new TemporalExpressionParser(
+    grammarURL=this.getClass.getResource("/org/clulab/timenorm/es.grammar"),
+    tokenize=ItalianTokenizer)
+
+  /**
    * Runs a demo of TemporalExpressionParser that reads time expressions from standard input and
    * writes their normalized forms to standard output.
    *

@@ -243,21 +243,20 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:Time] ||| [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] ||| 1.0
 [FieldValue:Time] ||| [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] : [FieldValue:SecondOfMinute] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] [FieldValue:SecondOfMinute] ||| 1.0
 [FieldValue:Time] ||| [FieldValue:HourOfAMPM] : [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
-[FieldValue:Time] ||| [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
+[FieldValue:Time] ||| [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
 [FieldValue:Time] ||| la [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] ||| 1.0
 [FieldValue:Time] ||| la [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] : [FieldValue:SecondOfMinute] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] [FieldValue:SecondOfMinute] ||| 1.0
 [FieldValue:Time] ||| la [FieldValue:HourOfAMPM] : [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
-[FieldValue:Time] ||| la [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
+[FieldValue:Time] ||| la [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
 [FieldValue:Time] ||| las [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] ||| 1.0
 [FieldValue:Time] ||| las [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] : [FieldValue:SecondOfMinute] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] [FieldValue:SecondOfMinute] ||| 1.0
 [FieldValue:Time] ||| las [FieldValue:HourOfAMPM] : [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
-[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
+[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
 [FieldValue:Time] ||| la [FieldValue:HourOfAMPM] y [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
-[FieldValue:Time] ||| la [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
+[FieldValue:Time] ||| la [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
 [FieldValue:Time] ||| las [FieldValue:HourOfAMPM] y [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
-[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
-[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] horas ||| [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| 1.
-[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] horas [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.
+[FieldValue:Time] ||| las [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
+[FieldValue:Time] ||| las [FieldValue:HourOfDay] horas ||| [FieldValue:HourOfDay] ||| 1.0
 
 // ==============================================
 // expressions that identify specially named days
@@ -284,7 +283,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ===========================================================
 // combinations of time fields that don't fully specify a time
 // ===========================================================
-[FieldValue:PartialYear] ||| [Int:0-99] ||| YEAR_OF_CENTURY [Int:0-99] ||| 1.
+[FieldValue:PartialYear] ||| [Int:0-99] ||| YEAR_OF_CENTURY [Int:0-99] ||| 1.0
 [FieldValue:PartialYear] ||| el ano [Int:0-99] ||| YEAR_OF_CENTURY [Int:0-99] ||| 1.0
 [FieldValue:PartialTime] ||| [FieldValue:Time] ||| [FieldValue:Time] ||| 1.0
 [FieldValue:PartialTime] ||| [FieldValue:PartOfDay] ||| [FieldValue:PartOfDay] ||| 1.0
@@ -425,7 +424,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [PeriodSet] ||| semanalmente ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
 [PeriodSet] ||| todas las semanas ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
 [PeriodSet] ||| una vez a la semana ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
-[PeriodSet] ||| mensual ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.
+[PeriodSet] ||| mensual ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
 [PeriodSet] ||| mensuales ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
 [PeriodSet] ||| mensualmente ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
 [PeriodSet] ||| una vez al mes ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0

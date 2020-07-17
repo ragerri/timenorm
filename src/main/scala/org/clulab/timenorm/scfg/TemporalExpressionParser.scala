@@ -33,7 +33,7 @@ object TemporalExpressionParser {
    */
   def es(): TemporalExpressionParser = new TemporalExpressionParser(
     grammarURL=this.getClass.getResource("/org/clulab/timenorm/es.grammar"),
-    tokenize=ItalianTokenizer)
+    tokenize=SpanishTokenizer)
 
   /**
    * Runs a demo of TemporalExpressionParser that reads time expressions from standard input and
@@ -430,3 +430,67 @@ object ItalianTokenizer extends (String => IndexedSeq[String]) {
     }
   }
 }
+
+object SpanishTokenizer extends (String => IndexedSeq[String]) {
+
+  def apply(sourceText: String): IndexedSeq[String] = {
+    val cleanedText = Normalizer.normalize(sourceText, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
+    val tokens = for (untrimmedWord <- DefaultTokenizer.wordBoundary.split(cleanedText).toIndexedSeq) yield {
+      val word = untrimmedWord.trim
+      if (word.isEmpty) {
+        IndexedSeq.empty[String]
+      }
+      // special case for concatenated YYYYMMDD
+      else if (word.matches("^\\d{8}$")) {
+        IndexedSeq(word.substring(0, 4), "-", word.substring(4, 6), "-", word.substring(6, 8))
+      }
+      // special case for concatenated YYMMDD
+      else if (word.matches("^\\d{6}$")) {
+        IndexedSeq(word.substring(0, 2), "-", word.substring(2, 4), "-", word.substring(4, 6))
+      }
+      // special case for concatenated HHMMTZ
+      else if (word.matches("^\\d{4}[A-Z]{3,4}$")) {
+        IndexedSeq(word.substring(0, 2), ":", word.substring(2, 4), word.substring(4).toLowerCase)
+      }
+      // special case for numbers in Spanish
+      else if (word.matches("^[cC]ient?\\w+$") || word.matches("^[Dd]oscient\\w+$") || word.matches("^[Tt]rescient\\w+$") ||
+        word.matches("^[Cc]uatrocient\\w+$") || word.matches("^[Qq]uinient\\w+$") ||
+        word.matches("^[Ss]eiscient\\w+$") || word.matches("^[Ss]etecient\\w+$") ||
+        word.matches("^[Oo]chocient\\w+$") || word.matches("^[Nn]ovecient\\w+$")) {
+        this.tokenizeSpanishNumber(word)
+      }
+      // otherwise, split at all letter/non-letter boundaries
+      else {
+        DefaultTokenizer.letterNonLetterBoundary.split(word).toIndexedSeq.map(_.trim.toLowerCase).filterNot(_.isEmpty)
+      }
+    }
+    tokens.flatten
+  }
+
+  protected def tokenizeSpanishNumber(word: String): Seq[String] = {
+    if (word.isEmpty) {
+      IndexedSeq.empty[String]
+    } else if (word.matches("^[cC]?ient?\\w+$")) {
+      IndexedSeq("cien") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Dd]oscient\\w+$")) {
+      IndexedSeq("dos") ++ this.tokenizeSpanishNumber(word.substring(3).toLowerCase)
+    } else if (word.matches("^[Tt]rescient\\w+$")) {
+      IndexedSeq("tres") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Cc]uatrocient\\w+$")) {
+      IndexedSeq("cuatro") ++ this.tokenizeSpanishNumber(word.substring(6).toLowerCase)
+    } else if (word.matches("^[Qq]uinient\\w+$")) {
+      IndexedSeq("quin") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Ss]eiscient\\w+$")) {
+      IndexedSeq("seis") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Ss]etecient\\w+$")) {
+      IndexedSeq("sete") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Oo]chocient\\w+$")) {
+      IndexedSeq("ocho") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else if (word.matches("^[Nn]ovecient\\w+$")) {
+      IndexedSeq("nove") ++ this.tokenizeSpanishNumber(word.substring(4).toLowerCase)
+    } else {
+      IndexedSeq(word)
+    }
+  }
+}
+

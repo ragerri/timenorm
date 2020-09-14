@@ -33,7 +33,7 @@ object TemporalExpressionParser {
    */
   def es(): TemporalExpressionParser = new TemporalExpressionParser(
     grammarURL=this.getClass.getResource("/org/clulab/timenorm/es.grammar"),
-    tokenize=SpanishTokenizer)
+    tokenize=DefaultTokenizer)
 
   /**
    * Runs a demo of TemporalExpressionParser that reads time expressions from standard input and
@@ -83,7 +83,7 @@ object TemporalExpressionParser {
  * val parser = new TemporalExpressionParser
  * // establish an anchor time
  * val anchor = TimeSpan.of(2013, 1, 4)
- * // parse an expression given an anchor time (assuming here that it succeeeds)
+ * // parse an expression given an anchor time (assuming here that it succeeds)
  * val Success(temporal) = parser.parse("two weeks ago", anchor)
  * // get the TimeML value ("2012-W51") from the Temporal
  * val value = temporal.timeMLValue

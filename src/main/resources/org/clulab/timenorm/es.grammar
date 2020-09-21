@@ -13,9 +13,10 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Nil] ||| . ||| ||| 1.0
 [Nil] ||| - ||| ||| 1.0
 [Nil] ||| / ||| ||| 1.0
-// [Nil] ||| cada ||| ||| 1.0
-// [Nil] ||| más ||| ||| 1.0
-// [Nil] ||| y ||| ||| 1.0
+[Nil] ||| a ||| ||| 1.0
+[Nil] ||| cada ||| ||| 1.0
+[Nil] ||| más ||| ||| 1.0
+[Nil] ||| y ||| ||| 1.0
 
 // ====================================
 // expressions that identify an integer
@@ -111,7 +112,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =================================================
 // other common expressions that identify an integer
 // =================================================
-// [Int] ||| par de ||| 2 ||| 1.0
+[Int] ||| par de ||| 2 ||| 1.0
 
 // =========================================
 // expressions that identify a temporal unit
@@ -122,7 +123,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Unit:Singular] ||| día ||| DAYS ||| 1.0
 [Unit:Singular] ||| semana ||| WEEKS ||| 1.0
 [Unit:Singular] ||| mes ||| MONTHS ||| 1.0
-// [Unit:Singular] ||| periodo ||| QUARTER_YEARS ||| 1.0
 [Unit:Singular] ||| trimestre ||| QUARTER_YEARS ||| 1.0
 [Unit:Singular] ||| año ||| YEARS ||| 1.0
 [Unit:Singular] ||| década ||| DECADES ||| 1.0
@@ -130,6 +130,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Unit:Singular] ||| siglo ||| CENTURIES ||| 1.0
 [Unit:Singular] ||| centuria ||| CENTURIES ||| 1.0
 [Unit] ||| [Unit:Singular] ||| [Unit:Singular] ||| 1.0
+
 [Unit:Plural] ||| segundos ||| SECONDS ||| 1.0
 [Unit:Plural] ||| minutos ||| MINUTES ||| 1.0
 [Unit:Plural] ||| horas ||| HOURS ||| 1.0
@@ -148,9 +149,13 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // expressions that identify a part of a day
 // =========================================
 [FieldValue:HourOfDay] ||| [Int:0-23] ||| HOUR_OF_DAY [Int:0-23] ||| 1.0
+[FieldValue:HourOfDay] ||| 24 ||| HOUR_OF_DAY 0 ||| 1.0
 [FieldValue:HourOfAMPM] ||| [Int:1-12] ||| HOUR_OF_AMPM [Int:1-12] ||| 1.0
+[FieldValue:HourOfAMPM] ||| [Int:1Digit] ||| HOUR_OF_AMPM [Int:1Digit] ||| 1.0
+[FieldValue:HourOfAMPM] ||| [Int:Teens] ||| HOUR_OF_AMPM [Int:Teens] ||| 1.0
 [FieldValue:MinuteOfHour] ||| [Int:0-59] ||| MINUTE_OF_HOUR [Int:0-59] ||| 1.0
 [FieldValue:SecondOfMinute] ||| [Int:0-59] ||| SECOND_OF_MINUTE [Int:0-59] ||| 1.0
+
 [FieldValue:AMPMOfDay] ||| a . m ||| AMPM_OF_DAY 0 ||| 1.0
 [FieldValue:AMPMOfDay] ||| am ||| AMPM_OF_DAY 0 ||| 1.0
 [FieldValue:AMPMOfDay] ||| de la madrugada ||| AMPM_OF_DAY 0 ||| 1.0
@@ -160,8 +165,10 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:AMPMOfDay] ||| del mediodía ||| AMPM_OF_DAY 1 ||| 1.0
 [FieldValue:AMPMOfDay] ||| de la tarde ||| AMPM_OF_DAY 1 ||| 1.0
 [FieldValue:AMPMOfDay] ||| de la noche ||| AMPM_OF_DAY 1 ||| 1.0
+
 [FieldValue:PartOfDay] ||| madrugada ||| MORNING_OF_DAY 1 ||| 1.0
 [FieldValue:PartOfDay] ||| mañana ||| MORNING_OF_DAY 1 ||| 1.0
+[FieldValue:PartOfDay] ||| la mañana ||| MORNING_OF_DAY 1 ||| 1.0
 [FieldValue:PartOfDay] ||| mediodía ||| AFTERNOON_OF_DAY 1 ||| 1.0
 [FieldValue:PartOfDay] ||| tarde ||| AFTERNOON_OF_DAY 1 ||| 1.0
 [FieldValue:PartOfDay] ||| tarde ||| EVENING_OF_DAY 1 ||| 1.0
@@ -213,80 +220,100 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =============================================
 // expressions that identify a month of the year
 // =============================================
-[FieldValue:MonthOfYear] ||| january ||| MONTH_OF_YEAR 1 ||| 1.0
-[FieldValue:MonthOfYear] ||| february ||| MONTH_OF_YEAR 2 ||| 1.0
-[FieldValue:MonthOfYear] ||| march ||| MONTH_OF_YEAR 3 ||| 1.0
-[FieldValue:MonthOfYear] ||| april ||| MONTH_OF_YEAR 4 ||| 1.0
-[FieldValue:MonthOfYear] ||| may ||| MONTH_OF_YEAR 5 ||| 1.0
-[FieldValue:MonthOfYear] ||| june ||| MONTH_OF_YEAR 6 ||| 1.0
-[FieldValue:MonthOfYear] ||| july ||| MONTH_OF_YEAR 7 ||| 1.0
-[FieldValue:MonthOfYear] ||| august ||| MONTH_OF_YEAR 8 ||| 1.0
-[FieldValue:MonthOfYear] ||| september ||| MONTH_OF_YEAR 9 ||| 1.0
-[FieldValue:MonthOfYear] ||| october ||| MONTH_OF_YEAR 10 ||| 1.0
-[FieldValue:MonthOfYear] ||| november ||| MONTH_OF_YEAR 11 ||| 1.0
-[FieldValue:MonthOfYear] ||| december ||| MONTH_OF_YEAR 12 ||| 1.0
-[FieldValue:MonthOfYear] ||| jan ||| MONTH_OF_YEAR 1 ||| 1.0
+[FieldValue:MonthOfYear] ||| enero ||| MONTH_OF_YEAR 1 ||| 1.0
+[FieldValue:MonthOfYear] ||| febrero ||| MONTH_OF_YEAR 2 ||| 1.0
+[FieldValue:MonthOfYear] ||| marzo ||| MONTH_OF_YEAR 3 ||| 1.0
+[FieldValue:MonthOfYear] ||| abril ||| MONTH_OF_YEAR 4 ||| 1.0
+[FieldValue:MonthOfYear] ||| mayo ||| MONTH_OF_YEAR 5 ||| 1.0
+[FieldValue:MonthOfYear] ||| junio ||| MONTH_OF_YEAR 6 ||| 1.0
+[FieldValue:MonthOfYear] ||| julio ||| MONTH_OF_YEAR 7 ||| 1.0
+[FieldValue:MonthOfYear] ||| agosto ||| MONTH_OF_YEAR 8 ||| 1.0
+[FieldValue:MonthOfYear] ||| septiembre ||| MONTH_OF_YEAR 9 ||| 1.0
+[FieldValue:MonthOfYear] ||| setiembre ||| MONTH_OF_YEAR 9 ||| 1.0
+[FieldValue:MonthOfYear] ||| octubre ||| MONTH_OF_YEAR 10 ||| 1.0
+[FieldValue:MonthOfYear] ||| noviembre ||| MONTH_OF_YEAR 11 ||| 1.0
+[FieldValue:MonthOfYear] ||| diciembre ||| MONTH_OF_YEAR 12 ||| 1.0
+[FieldValue:MonthOfYear] ||| ene ||| MONTH_OF_YEAR 1 ||| 1.0
+[FieldValue:MonthOfYear] ||| en . ||| MONTH_OF_YEAR 1 ||| 1.0
 [FieldValue:MonthOfYear] ||| feb ||| MONTH_OF_YEAR 2 ||| 1.0
+[FieldValue:MonthOfYear] ||| febr . ||| MONTH_OF_YEAR 2 ||| 1.0
 [FieldValue:MonthOfYear] ||| mar ||| MONTH_OF_YEAR 3 ||| 1.0
-[FieldValue:MonthOfYear] ||| apr ||| MONTH_OF_YEAR 4 ||| 1.0
+[FieldValue:MonthOfYear] ||| mzo . ||| MONTH_OF_YEAR 3 ||| 1.0
+[FieldValue:MonthOfYear] ||| abr ||| MONTH_OF_YEAR 4 ||| 1.0
 [FieldValue:MonthOfYear] ||| may ||| MONTH_OF_YEAR 5 ||| 1.0
+[FieldValue:MonthOfYear] ||| my . ||| MONTH_OF_YEAR 5 ||| 1.0
 [FieldValue:MonthOfYear] ||| jun ||| MONTH_OF_YEAR 6 ||| 1.0
 [FieldValue:MonthOfYear] ||| jul ||| MONTH_OF_YEAR 7 ||| 1.0
-[FieldValue:MonthOfYear] ||| aug ||| MONTH_OF_YEAR 8 ||| 1.0
+[FieldValue:MonthOfYear] ||| ago ||| MONTH_OF_YEAR 8 ||| 1.0
+[FieldValue:MonthOfYear] ||| ag . ||| MONTH_OF_YEAR 8 ||| 1.0
 [FieldValue:MonthOfYear] ||| sep ||| MONTH_OF_YEAR 9 ||| 1.0
-[FieldValue:MonthOfYear] ||| sept ||| MONTH_OF_YEAR 9 ||| 1.0
+[FieldValue:MonthOfYear] ||| set . ||| MONTH_OF_YEAR 9 ||| 1.0
 [FieldValue:MonthOfYear] ||| oct ||| MONTH_OF_YEAR 10 ||| 1.0
 [FieldValue:MonthOfYear] ||| nov ||| MONTH_OF_YEAR 11 ||| 1.0
-[FieldValue:MonthOfYear] ||| dec ||| MONTH_OF_YEAR 12 ||| 1.0
+[FieldValue:MonthOfYear] ||| dic ||| MONTH_OF_YEAR 12 ||| 1.0
 [FieldValue:NumericMonthOfYear] ||| [Int:1-12] ||| MONTH_OF_YEAR [Int:1-12] ||| 1.0
 
 // ======================================================
 // expressions that identify a fiscal quarter of the year
 // ======================================================
-[FieldValue:QuarterOfYear] ||| first quarter ||| QUARTER_OF_YEAR 1 ||| 1.0
-[FieldValue:QuarterOfYear] ||| second quarter ||| QUARTER_OF_YEAR 2 ||| 1.0
-[FieldValue:QuarterOfYear] ||| third quarter ||| QUARTER_OF_YEAR 3 ||| 1.0
-[FieldValue:QuarterOfYear] ||| fourth quarter ||| QUARTER_OF_YEAR 4 ||| 1.0
-[FieldValue:QuarterOfYear] ||| first - quarter ||| QUARTER_OF_YEAR 1 ||| 1.0
-[FieldValue:QuarterOfYear] ||| second - quarter ||| QUARTER_OF_YEAR 2 ||| 1.0
-[FieldValue:QuarterOfYear] ||| third - quarter ||| QUARTER_OF_YEAR 3 ||| 1.0
-[FieldValue:QuarterOfYear] ||| fourth - quarter ||| QUARTER_OF_YEAR 4 ||| 1.0
+[FieldValue:QuarterOfYear] ||| primer trimestre ||| QUARTER_OF_YEAR 1 ||| 1.0
+[FieldValue:QuarterOfYear] ||| segundo trimestre ||| QUARTER_OF_YEAR 2 ||| 1.0
+[FieldValue:QuarterOfYear] ||| tercer trimestre ||| QUARTER_OF_YEAR 3 ||| 1.0
+[FieldValue:QuarterOfYear] ||| cuarto trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
+[FieldValue:QuarterOfYear] ||| último trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
 
 // ==============================================
 // expressions that identify a season of the year
 // ==============================================
-[FieldValue:SeasonOfYear] ||| spring ||| SPRING_OF_YEAR 1 ||| 1.0
-[FieldValue:SeasonOfYear] ||| summer ||| SUMMER_OF_YEAR 1 ||| 1.0
-[FieldValue:SeasonOfYear] ||| fall ||| FALL_OF_YEAR 1 ||| 1.0
-[FieldValue:SeasonOfYear] ||| autumn ||| FALL_OF_YEAR 1 ||| 1.0
-[FieldValue:SeasonOfYear] ||| winter ||| WINTER_OF_YEAR 1 ||| 1.0
+[FieldValue:SeasonOfYear] ||| primavera ||| SPRING_OF_YEAR 1 ||| 1.0
+[FieldValue:SeasonOfYear] ||| verano ||| SUMMER_OF_YEAR 1 ||| 1.0
+[FieldValue:SeasonOfYear] ||| otoño ||| FALL_OF_YEAR 1 ||| 1.0
+[FieldValue:SeasonOfYear] ||| invierno ||| WINTER_OF_YEAR 1 ||| 1.0
 
 // =======================================
 // expressions that identify a time of day
 // =======================================
-[FieldValue:Time] ||| noon ||| ( FieldValue:HourOfDay HOUR_OF_DAY 12 ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
-[FieldValue:Time] ||| midday ||| ( FieldValue:HourOfDay HOUR_OF_DAY 12 ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| mediodía ||| ( FieldValue:HourOfDay HOUR_OF_DAY 12 ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| medianoche ||| ( FieldValue:HourOfDay HOUR_OF_DAY 0 ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+
 [FieldValue:Time] ||| [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] ||| 1.0
 [FieldValue:Time] ||| [FieldValue:HourOfDay] : [FieldValue:MinuteOfHour] : [FieldValue:SecondOfMinute] ||| [FieldValue:HourOfDay] [FieldValue:MinuteOfHour] [FieldValue:SecondOfMinute] ||| 1.0
 [FieldValue:Time] ||| [FieldValue:HourOfAMPM] : [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] [FieldValue:MinuteOfHour] [FieldValue:AMPMOfDay] ||| 1.0
 [FieldValue:Time] ||| [FieldValue:HourOfAMPM] [FieldValue:AMPMOfDay] ||| [FieldValue:HourOfAMPM] ( FieldValue MINUTE_OF_HOUR 0 ) [FieldValue:AMPMOfDay] ||| 1.0
 
+[FieldValue:Time] ||| [FieldValue:HourOfDay] horas ||| [FieldValue:HourOfDay] ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| [FieldValue:HourOfDay] h ||| [FieldValue:HourOfDay] ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| la [FieldValue:HourOfDay] ||| [FieldValue:HourOfDay] ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| las [FieldValue:HourOfDay] ||| [FieldValue:HourOfDay] ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| la [Int:1Digit] ||| ( FieldValue:HourOfDay HOUR_OF_DAY [Int:1Digit] ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| las [Int:1Digit] ||| ( FieldValue:HourOfDay HOUR_OF_DAY [Int:1Digit] ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+[FieldValue:Time] ||| las [Int:2Digit] ||| ( FieldValue:HourOfDay HOUR_OF_DAY [Int:2Digit] ) ( FieldValue:MinuteOfHour MINUTE_OF_HOUR 0 ) ||| 1.0
+
 // ==============================================
 // expressions that identify specially named days
 // ==============================================
-[FieldValue:NamedDay] ||| thanksgiving ||| ( FieldValue DAY_OF_WEEK 4 ) ( FieldValue MONTH_OF_YEAR 11 ) ( FieldValue ALIGNED_WEEK_OF_MONTH 4 ) ||| 1.0
-[FieldValue:NamedDay] ||| christmas ||| ( FieldValue MONTH_OF_YEAR 12 ) ( FieldValue DAY_OF_MONTH 25 ) ||| 1.0
-[FieldValue:NamedDay] ||| easter ||| EASTER_DAY_OF_YEAR 1 ||| 1.0
-[FieldValue:NamedDay] ||| election ||| ( FieldValue DAY_OF_WEEK 2 ) ( FieldValue MONTH_OF_YEAR 11 ) ( FieldValue ALIGNED_WEEK_OF_MONTH 1 ) ||| 1.0
+[FieldValue:NamedDay] ||| año nuevo ||| ( FieldValue MONTH_OF_YEAR 1 ) ( FieldValue DAY_OF_MONTH 1 ) ||| 1.0
+[FieldValue:NamedDay] ||| día de reyes ||| ( FieldValue MONTH_OF_YEAR 1 ) ( FieldValue DAY_OF_MONTH 6 ) ||| 1.0
+[FieldValue:NamedDay] ||| día del padre ||| ( FieldValue MONTH_OF_YEAR 3 ) ( FieldValue DAY_OF_MONTH 19 ) ||| 1.0
+[FieldValue:NamedDay] ||| pascua ||| EASTER_DAY_OF_YEAR 1 ||| 1.0
+[FieldValue:NamedDay] ||| día de la madre ||| ( FieldValue DAY_OF_WEEK 7 ) ( FieldValue MONTH_OF_YEAR 5 ) ( FieldValue ALIGNED_WEEK_OF_MONTH 1 ) ||| 1.0
+[FieldValue:NamedDay] ||| halloween ||| ( FieldValue MONTH_OF_YEAR 10 ) ( FieldValue DAY_OF_MONTH 31 ) ||| 1.0
+[FieldValue:NamedDay] ||| todos los santos ||| ( FieldValue MONTH_OF_YEAR 11 ) ( FieldValue DAY_OF_MONTH 1 ) ||| 1.0
+[FieldValue:NamedDay] ||| nochebuena ||| ( FieldValue MONTH_OF_YEAR 12 ) ( FieldValue DAY_OF_MONTH 24 ) ||| 1.0
+[FieldValue:NamedDay] ||| navidad ||| ( FieldValue MONTH_OF_YEAR 12 ) ( FieldValue DAY_OF_MONTH 25 ) ||| 1.0
+[FieldValue:NamedDay] ||| nochevieja ||| ( FieldValue MONTH_OF_YEAR 12 ) ( FieldValue DAY_OF_MONTH 31 ) ||| 1.0
+[FieldValue:NamedDay] ||| fin de año ||| ( FieldValue MONTH_OF_YEAR 12 ) ( FieldValue DAY_OF_MONTH 31 ) ||| 1.0
 
 // ================================================
 // expressions that identify both a month and a day
 // ================================================
 [FieldValue:MonthDay] ||| [FieldValue:NamedDay] ||| [FieldValue:NamedDay] ||| 1.0
-[FieldValue:MonthDay] ||| [FieldValue:MonthOfYear] [FieldValue:DayOfMonth] ||| [FieldValue:MonthOfYear] [FieldValue:DayOfMonth] ||| 1.0
-[FieldValue:MonthDay] ||| [FieldValue:MonthOfYear] [FieldValue:OrdinalDayOfMonth] ||| [FieldValue:MonthOfYear] [FieldValue:OrdinalDayOfMonth] ||| 1.0
-[FieldValue:MonthDay] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
-[FieldValue:MonthDay] ||| [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
+//[FieldValue:MonthDay] ||| [FieldValue:DayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:DayOfMonth] ||| 1.0
+//[FieldValue:MonthDay] ||| [FieldValue:DayOfMonth] de [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:DayOfMonth] ||| 1.0
+[FieldValue:MonthDay] ||| [FieldValue:OrdinalDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:OrdinalDayOfMonth] ||| 1.0
+[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
+[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] de [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
+[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:NumericMonthOfYear] ||| [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| 1.0
 
 // ===========================================================

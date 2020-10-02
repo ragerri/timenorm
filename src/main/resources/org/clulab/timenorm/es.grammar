@@ -233,7 +233,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ==================================
 [FieldValue:OrdinalDayOfMonth] ||| primero de ||| DAY_OF_MONTH 1 ||| 1.0
 [FieldValue:NumericDayOfMonth] ||| [Int:1-31] ||| DAY_OF_MONTH [Int:1-31] ||| 1.0
-[FieldValue:NumericDayOfMonth] ||| el [Int:1-31] ||| DAY_OF_MONTH [Int:1-31] ||| 1.0
 
 // ======================================
 // 9. Meses del año // Months of the year
@@ -276,11 +275,11 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =====================================================
 // 10. Trimestres del año // Fiscal quarters of the year
 // =====================================================
-[FieldValue:QuarterOfYear] ||| primer trimestre ||| QUARTER_OF_YEAR 1 ||| 1.0
+//[FieldValue:QuarterOfYear] ||| primer trimestre ||| QUARTER_OF_YEAR 1 ||| 1.0
 [FieldValue:QuarterOfYear] ||| segundo trimestre ||| QUARTER_OF_YEAR 2 ||| 1.0
 [FieldValue:QuarterOfYear] ||| tercer trimestre ||| QUARTER_OF_YEAR 3 ||| 1.0
 [FieldValue:QuarterOfYear] ||| cuarto trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
-[FieldValue:QuarterOfYear] ||| último trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
+//[FieldValue:QuarterOfYear] ||| último trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
 
 // =============================================
 // 11. Estaciones del año // Seasons of the year
@@ -311,7 +310,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:MonthDay] ||| [FieldValue:NamedDay] ||| [FieldValue:NamedDay] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:OrdinalDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:OrdinalDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
-[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] de [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
+//[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] de [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:NumericMonthOfYear] ||| [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| 1.0
 
@@ -339,23 +338,18 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =============================================================================
 // 16. Combinaciones absolutas de tiempo // Absolute combinations of time fields
 // =============================================================================
-[FieldValue:Year] ||| [Int:1000-9999] ||| YEAR [Int:1000-9999] ||| 1.0
+[FieldValue:Year] ||| [Int:100-9999] ||| YEAR [Int:100-9999] ||| 1.0
 [FieldValue:Year] ||| [Int:4Digit] ||| YEAR [Int:4Digit] ||| 1.0
 
 [FieldValue:Year] ||| año [FieldValue:Year] ||| [FieldValue:Year] ||| 1.0
 [FieldValue:YearMonth] ||| [FieldValue:MonthOfYear] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthOfYear] ||| 1.0
-[FieldValue:YearMonth] ||| [FieldValue:MonthOfYear] de [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthOfYear] ||| 1.0
 [FieldValue:YearMonthDay] ||| [FieldValue:MonthDay] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthDay] ||| 1.0
-[FieldValue:YearMonthDay] ||| [FieldValue:MonthDay] de [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthDay] ||| 1.0
 
 [FieldValue:Absolute] ||| [FieldValue:Year] ||| [FieldValue:Year] ||| 1.0
 [FieldValue:Absolute] ||| [FieldValue:QuarterOfYear] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:QuarterOfYear] ||| 1.0
-[FieldValue:Absolute] ||| [FieldValue:QuarterOfYear] de [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:QuarterOfYear] ||| 1.0
 [FieldValue:Absolute] ||| [FieldValue:YearMonth] ||| [FieldValue:YearMonth] ||| 1.0
 [FieldValue:Absolute] ||| [FieldValue:YearMonthDay] ||| [FieldValue:YearMonthDay] ||| 1.0
 [FieldValue:Absolute] ||| [FieldValue:YearMonthDay] [FieldValue:Time] ||| [FieldValue:YearMonthDay] [FieldValue:Time] ||| 1.0
-[FieldValue:Absolute] ||| [FieldValue:YearMonthDay] a [FieldValue:Time] ||| [FieldValue:YearMonthDay] [FieldValue:Time] ||| 1.0
-[FieldValue:Absolute] ||| [FieldValue:YearMonthDay] al [FieldValue:Time] ||| [FieldValue:YearMonthDay] [FieldValue:Time] ||| 1.0
 
 // ======================================
 // 17. Periodos simples // Simple periods
@@ -368,7 +362,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| primeras [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
 
 // P. ej., "un periodo de tres años"
-[Period] ||| periodo de [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
+[Period] ||| un periodo de [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
 
 // =======================================================================
 // 18. Periodos de tiempos fraccionados // Periods with fractional amounts
@@ -614,7 +608,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Regular] ||| hace [Period] ||| MoveEarlier ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 
 // Interpretación alternativa: exactamente [Period] antes
-[TimeSpan:AllowsThis] ||| último [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
+//[TimeSpan:AllowsThis] ||| último [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| última [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| últimos [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| últimas [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0

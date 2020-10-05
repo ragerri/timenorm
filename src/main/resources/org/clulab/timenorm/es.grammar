@@ -3,7 +3,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ===================================================================================
 // 1. Formas que se pueden pasar por alto // Expressions that can sometimes be ignored
 // ===================================================================================
-// [Nil] ||| un ||| ||| 1.0
+[Nil] ||| un ||| ||| 1.0
 // [Nil] ||| una ||| ||| 1.0
 [Nil] ||| el ||| ||| 1.0
 [Nil] ||| la ||| ||| 1.0
@@ -380,22 +380,23 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ===================================================
 // 19. Periodos sin especificar // Unspecified periods
 // ===================================================
-[Period] ||| poco ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| rato ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| largo rato ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| poco rato ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| mucho rato ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| algo de tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| algún tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| cierto tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| largo tiempo ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| poco tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| mucho tiempo ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| corto periodo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| largo periodo ||| Unspecified UNSPECIFIED ||| 1.0
 
 [Period] ||| algo [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| algún [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| alguna [Unit] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| cierto [Unit] ||| Unspecified [Unit] ||| 1.0
-[Period] ||| cierta [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| poco [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| poca [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| mucho [Unit] ||| Unspecified [Unit] ||| 1.0
@@ -407,10 +408,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| pocas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 [Period] ||| muchos [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 [Period] ||| muchas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
-[Period] ||| últimos [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
-[Period] ||| últimas [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
-[Period] ||| primeros [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
-[Period] ||| primeras [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
 
 // P. ej., "semanas"
 [Period] ||| [Unit:Plural] ||| Unspecified [Unit:Plural] ||| 1.0
@@ -420,12 +417,12 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ================================================================
 [Period] ||| casi [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| sobre [Period] ||| WithModifier [Period] APPROX ||| 1.0
-[Period] ||| cerca de [Period] ||| WithModifier [Period] APPROX ||| 1.0
+[Period] ||| cerca [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| unos [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| unas [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| apenas [Period] ||| WithModifier [Period] APPROX ||| 1.0
-[Period] ||| alrededor de [Period] ||| WithModifier [Period] APPROX ||| 1.0
-[Period] ||| en torno a [Period] ||| WithModifier [Period] APPROX ||| 1.0
+[Period] ||| alrededor [Period] ||| WithModifier [Period] APPROX ||| 1.0
+[Period] ||| en torno [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| más o menos [Period] ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| [Period] más o menos ||| WithModifier [Period] APPROX ||| 1.0
 [Period] ||| aproximadamente [Period] ||| WithModifier [Period] APPROX ||| 1.0
@@ -440,50 +437,36 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| al menos [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
 [Period] ||| no menos de [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
 [Period] ||| mínimo [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
+[Period] ||| como mínimo [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
+[Period] ||| [Period] como mínimo ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
 [Period] ||| desde [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
 
 [Period] ||| no más de [Period] ||| WithModifier [Period] EQUAL_OR_LESS ||| 1.0
 [Period] ||| máximo [Period] ||| WithModifier [Period] EQUAL_OR_LESS ||| 1.0
+[Period] ||| como máximo [Period] ||| WithModifier [Period] EQUAL_OR_LESS ||| 1.0
+[Period] ||| [Period] como máximo ||| WithModifier [Period] EQUAL_OR_LESS ||| 1.0
 [Period] ||| hasta [Period] ||| WithModifier [Period] EQUAL_OR_LESS ||| 1.0
 
 // ========================================
 // 21. Conjuntos de periodos // Period sets
 // ========================================
-[PeriodSet] ||| cada hora ||| WithQuantifier ( Period Simple 1 HOURS ) EVERY ||| 1.0
-[PeriodSet] ||| por hora ||| WithQuantifier ( Period Simple 1 HOURS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez por hora ||| WithQuantifier ( Period Simple 1 HOURS ) EVERY ||| 1.0
-
-[PeriodSet] ||| cada día ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
-[PeriodSet] ||| por día ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez al día ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
 [PeriodSet] ||| cada jornada ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
 [PeriodSet] ||| diariamente ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
-
-[PeriodSet] ||| cada semana ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
-[PeriodSet] ||| por semana ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez a la semana ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez por semana ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
 [PeriodSet] ||| semanalmente ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
-
-[PeriodSet] ||| cada mes ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez al mes ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
 [PeriodSet] ||| mensualmente ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
-
-[PeriodSet] ||| cada trimestre ||| WithQuantifier ( Period Simple 1 QUARTER_YEARS ) EVERY ||| 1.0
 [PeriodSet] ||| trimestralmente ||| WithQuantifier ( Period Simple 1 QUARTER_YEARS ) EVERY ||| 1.0
-
-[PeriodSet] ||| cada año ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez al año ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
-[PeriodSet] ||| una vez por año ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
 [PeriodSet] ||| anualmente ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
 
-//[PeriodSet] ||| todos los [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
-//[PeriodSet] ||| todas las [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
-//[PeriodSet] ||| cada [Period] ||| WithQuantifier [Period] EACH ||| 1.0
+[PeriodSet] ||| cada [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
+[PeriodSet] ||| por [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
+[PeriodSet] ||| una vez [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
+[PeriodSet] ||| una vez cada [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
+[PeriodSet] ||| una vez por [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
+// [PeriodSet] ||| cada [Period] ||| WithQuantifier [Period] EACH ||| 1.0
 
-// ===========================
-// 22. TimeSpans: Solo/Regular
-// ===========================
+// =============
+// 22. TimeSpans
+// =============
 [TimeSpan] ||| [TimeSpan:Solo] ||| [TimeSpan:Solo] ||| 1.0
 [TimeSpan] ||| [TimeSpan:Regular] ||| [TimeSpan:Regular] ||| 1.0
 
@@ -503,8 +486,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| reciente ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientes ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientemente ||| Simple PAST ||| 1.0
-[TimeSpan:Solo] ||| aquella vez ||| Simple PAST ||| 1.0
-[TimeSpan:Solo] ||| aquel momento ||| Simple PAST ||| 1.0
 
 [TimeSpan:Solo] ||| presente ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actual ||| Simple PRESENT ||| 1.0
@@ -525,14 +506,40 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| próximamente ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| a partir de ahora ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| de ahora en adelante ||| Simple FUTURE ||| 1.0
-// [TimeSpan:Solo] ||| a largo plazo ||| Simple FUTURE ||| 1.0
+[TimeSpan:Solo] ||| a largo plazo ||| Simple FUTURE ||| 1.0
 
-// ==============================================
-// 24. TimeSpans absolutos // Absolute time spans
-// ==============================================
+// =======================================================================================
+// 24. TimeSpans absolutos, décadas y siglos // Absolute time spans, decades and centuries
+// =======================================================================================
 [TimeSpan:Regular] ||| [FieldValue:Absolute] ||| FindAbsolute [FieldValue:Absolute] ||| 1.0
 
+// P. ej., "la década de 1984", "los años treinta"
 [TimeSpan:Regular] ||| la década de [FieldValue:Year] ||| FindEnclosing ( TimeSpan FindAbsolute [FieldValue:Year] ) DECADES ||| 1.0
+[TimeSpan:Regular] ||| los años [Int:Tens] ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY [Int:Tens] ) ||| 1.0
+[TimeSpan:Regular] ||| los [Int:Tens] ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY [Int:Tens] ) ||| 1.0
+[TimeSpan:Regular] ||| los años veinte ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
+[TimeSpan:Regular] ||| los veinte ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
+[TimeSpan:Regular] ||| los años dos mil ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
+[TimeSpan:Regular] ||| los dos mil ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
+
+[TimeSpan:Regular] ||| los años 20 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
+[TimeSpan:Regular] ||| los 20 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 30 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 3 ) ||| 1.0
+[TimeSpan:Regular] ||| los 30 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 3 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 40 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 4 ) ||| 1.0
+[TimeSpan:Regular] ||| los 40 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 4 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 50 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 5 ) ||| 1.0
+[TimeSpan:Regular] ||| los 50 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 5 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 60 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 6 ) ||| 1.0
+[TimeSpan:Regular] ||| los 60 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 6 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 70 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 7 ) ||| 1.0
+[TimeSpan:Regular] ||| los 70 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 7 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 80 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 8 ) ||| 1.0
+[TimeSpan:Regular] ||| los 80 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 8 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 90 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 9 ) ||| 1.0
+[TimeSpan:Regular] ||| los 90 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 9 ) ||| 1.0
+[TimeSpan:Regular] ||| los años 2000 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
+[TimeSpan:Regular] ||| los 2000 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
 
 [TimeSpan:Regular] ||| siglo [Int] ||| EndAtStartOf ( TimeSpan FindAbsolute ( FieldValue CENTURY [Int] ) ) ( Period Simple 1 CENTURIES ) ||| 1.0
 [TimeSpan:Regular] ||| siglo i ||| EndAtStartOf ( TimeSpan FindAbsolute ( FieldValue CENTURY 1 ) ) ( Period Simple 1 CENTURIES ) ||| 1.0
@@ -562,16 +569,15 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ===============================================
 [TimeSpan:Regular] ||| ahora ||| Simple PRESENT ||| 1.0
 [TimeSpan:Regular] ||| hoy ||| FindEnclosing PRESENT DAYS ||| 1.0
-[TimeSpan:Regular] ||| esta noche ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT DAYS ) ( FieldValue NIGHT_OF_DAY 1 ) ||| 1.0
-[TimeSpan:AllowsThis] ||| mismo día ||| FindEnclosing PRESENT DAYS ||| 1.0
+[TimeSpan:Regular] ||| este mismo día ||| FindEnclosing PRESENT DAYS ||| 1.0
 
+// P. ej., "este año"
 [TimeSpan:Regular] ||| el [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 [TimeSpan:Regular] ||| la [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 [TimeSpan:Regular] ||| este [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 [TimeSpan:Regular] ||| esta [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
-// [TimeSpan:Regular] ||| that [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
-// P. ej., "la actual semana"
 [TimeSpan:Regular] ||| actual [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
+[TimeSpan:Regular] ||| [Unit:Singular] actual ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 
 // P. ej., "esta tarde"
 [TimeSpan:Regular] ||| este [FieldValue:Partial] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
@@ -586,89 +592,86 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =============================================
 [TimeSpan:Regular] ||| ayer ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
 
-// P. ej., "pasado octubre"
+// P. ej., "el pasado octubre"
 [TimeSpan:AllowsThis] ||| último [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| última [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| pasado [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| pasada [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
+[TimeSpan:AllowsThis] ||| [FieldValue:Partial] pasado ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
+[TimeSpan:AllowsThis] ||| [FieldValue:Partial] pasada ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| anterior [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
+[TimeSpan:AllowsThis] ||| [FieldValue:Partial] anterior ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
 
-// P. ej., "las últimas tres semanas", "hace casi cuatro años"
+// P. ej., "las últimas tres semanas"
+[TimeSpan:AllowsThis] ||| último [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| última [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| últimos [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| últimas [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| pasado [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| pasada [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| pasados [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| pasadas [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| [Period] pasado ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| [Period] pasada ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| [Period] pasados ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| [Period] pasadas ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| anterior [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| anteriores [Period] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| [Period] anterior ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| [Period] anteriores ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 
-// P. ej., "tres años antes"
-[TimeSpan:Regular] ||| [Period] antes ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
-[TimeSpan:Regular] ||| [Period] atrás ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
-[TimeSpan:Regular] ||| hace [Period] ||| MoveEarlier ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+// P. ej., "hace tres años"
+// [TimeSpan:Regular] ||| hace [Period] ||| MoveEarlier ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+// [TimeSpan:Regular] ||| [Period] antes ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+// [TimeSpan:Regular] ||| [Period] atrás ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 
 // Interpretación alternativa: exactamente [Period] antes
-//[TimeSpan:AllowsThis] ||| último [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
-[TimeSpan:AllowsThis] ||| última [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
-[TimeSpan:AllowsThis] ||| últimos [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
-[TimeSpan:AllowsThis] ||| últimas [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
+[TimeSpan:Regular] ||| hace [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| [Period] antes ||| MoveEarlier PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| [Period] atrás ||| MoveEarlier PRESENT [Period] ||| 1.0
-[TimeSpan:Regular] ||| hace [Period] ||| MoveEarlier PRESENT [Period] ||| 1.0
 
 // P. ej., "el día antes del último martes"
 [TimeSpan:Regular] ||| [Period] antes [TimeSpan:Regular] ||| EndAtStartOf ( TimeSpan FindEnclosing [TimeSpan:Regular] [Period] ) [Period] ||| 1.0
 [TimeSpan:Regular] ||| [Period] anterior [TimeSpan:Regular] ||| EndAtStartOf ( TimeSpan FindEnclosing [TimeSpan:Regular] [Period] ) [Period] ||| 1.0
 
 // P. ej., "enero del último año"
-[TimeSpan:Regular] ||| [FieldValue:Partial] del último [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la última [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los últimos [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las últimas [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del pasado [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la pasada [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los pasados [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las pasadas [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] pasado ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] pasada ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los [Unit] pasados ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las [Unit] pasadas ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del último [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la última [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del pasado [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la pasada [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] pasado ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] pasada ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] anterior ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] anterior ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de hace [Unit] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
 
 // P. ej., "el tercer trimestre del año pasado"
 [TimeSpan:Regular] ||| [FieldValue:Partial] del último [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] de la última [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los últimos [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las últimas [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] del pasado [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] de la pasada [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los pasados [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las pasadas [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] del [Period] pasado ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Period] pasada ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de los [Period] pasados ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de las [Period] pasadas ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] del [Period] anterior ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Period] anterior ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de hace [Period] ||| FindEnclosed ( TimeSpan EndAtStartOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 
 // ===========================================
 // 27. TimeSpans de futuro // Later time spans
 // ===========================================
 [TimeSpan:Regular] ||| mañana ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
-// [TimeSpan:Regular] ||| pasado mañana ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 2 DAYS ) ||| 1.0
-[TimeSpan:Regular] ||| pasado mañana ||| MoveLater PRESENT ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| pasado mañana ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 2 DAYS ) ||| 1.0
 
 // P. ej., "próximo martes"
 [TimeSpan:AllowsThis] ||| próximo [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| próxima [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| próximos [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| próximas [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| [FieldValue:Partial] próximo ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| [FieldValue:Partial] próxima ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| [FieldValue:Partial] próximos ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| [FieldValue:Partial] próximas ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| siguiente [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| siguientes [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| [FieldValue:Partial] siguiente ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
-[TimeSpan:AllowsThis] ||| [FieldValue:Partial] siguientes ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:AllowsThis] ||| [FieldValue:Partial] que viene ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| el [FieldValue:Partial] después ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| la [FieldValue:Partial] después ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 
 // P. ej., "próximo año"
 [TimeSpan:AllowsThis] ||| próximo [Period] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
@@ -680,35 +683,46 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:AllowsThis] ||| [Period] próximos ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| [Period] próximas ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| siguiente [Period] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
-[TimeSpan:AllowsThis] ||| [Period] siguiente ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| siguientes [Period] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
+[TimeSpan:AllowsThis] ||| [Period] siguiente ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| [Period] siguientes ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:AllowsThis] ||| [Period] que viene ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
-[TimeSpan:AllowsThis] ||| [Period] que vienen ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
-
-// P. ej., "enero del próximo año"
-[TimeSpan:Regular] ||| [FieldValue:Partial] del próximo [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la próxima [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] próximo ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] próxima ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del siguiente [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la siguiente [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
-[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
 
 // P. ej., "el día después"
 [TimeSpan:Regular] ||| el [Period] después ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 [TimeSpan:Regular] ||| la [Period] después ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ||| 1.0
 
-// alternate interpretation: exactly [Period] earlier
+// Interpretación alternativa: exactamente [Period] después
 [TimeSpan:Regular] ||| [Period] después ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| [Period] más tarde ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| al [Period] siguiente ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| a la [Period] siguiente ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| dentro de [Period] ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| en [Period] ||| MoveLater PRESENT [Period] ||| 1.0
+
+// P. ej., "enero del próximo año"
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del próximo [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la próxima [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] próximo ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] próxima ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del siguiente [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la siguiente [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] del [Unit] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+// [TimeSpan:Regular] ||| [FieldValue:Partial] de la [Unit] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0
+
+// P. ej., "el tercer trimestre del próximo año"
+[TimeSpan:Regular] ||| [FieldValue:Partial] del próximo [Period] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la próxima [Period] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] del [Period] próximo ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Period] próxima ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] del siguiente [Period] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la siguiente [Period] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] del [Period] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Period] siguiente ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] del [Period] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] de la [Period] que viene ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Period] ) [Period] ) [FieldValue:Partial] ||| 1.0
 
 // ==========================================================================================================
 // 28. Demostrativos para reglas marcadas con :AllowsThis // Demonstratives for rules tagged with :AllowsThis
@@ -728,112 +742,82 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Regular] ||| [FieldValue:Partial] ||| FindAtOrEarlier PRESENT [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| [FieldValue:Partial] ||| FindLater PRESENT [FieldValue:Partial] ||| 1.0
 
-// =================================================================================================================
-// 30. Expresiones que se refieren preferiblemente a tiempos pasados // Expressions that could be preferably earlier
-// =================================================================================================================
-// P. ej., "los años treinta"
-[TimeSpan:Regular] ||| los años [Int:Tens] ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY [Int:Tens] ) ||| 1.0
-[TimeSpan:Regular] ||| los [Int:Tens] ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY [Int:Tens] ) ||| 1.0
-[TimeSpan:Regular] ||| los años veinte ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
-[TimeSpan:Regular] ||| los veinte ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
-[TimeSpan:Regular] ||| los años dos mil ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
-[TimeSpan:Regular] ||| los dos mil ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
-
-[TimeSpan:Regular] ||| los años 20 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
-[TimeSpan:Regular] ||| los 20 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 2 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 30 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 3 ) ||| 1.0
-[TimeSpan:Regular] ||| los 30 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 3 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 40 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 4 ) ||| 1.0
-[TimeSpan:Regular] ||| los 40 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 4 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 50 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 5 ) ||| 1.0
-[TimeSpan:Regular] ||| los 50 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 5 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 60 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 6 ) ||| 1.0
-[TimeSpan:Regular] ||| los 60 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 6 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 70 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 7 ) ||| 1.0
-[TimeSpan:Regular] ||| los 70 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 7 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 80 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 8 ) ||| 1.0
-[TimeSpan:Regular] ||| los 80 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 8 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 90 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 9 ) ||| 1.0
-[TimeSpan:Regular] ||| los 90 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 9 ) ||| 1.0
-[TimeSpan:Regular] ||| los años 2000 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
-[TimeSpan:Regular] ||| los 2000 ||| FindAtOrEarlier PRESENT ( FieldValue DECADE_OF_CENTURY 0 ) ||| 1.0
-
 // ========================================================================
-// 31. Expresiones compuestas // Expressions changing time span granularity
+// 30. Expresiones compuestas // Expressions changing time span granularity
 // ========================================================================
-// P. ej., "el trimestre de hace un año"
+// P. ej., "la semana del 6 de marzo", "el trimestre de hace un año"
 [TimeSpan:Regular] ||| [Unit:Singular] [TimeSpan:Regular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-
-// P. ej., "la semana del 6 de marzo"
-//[TimeSpan:Regular] ||| [Unit:Singular] de [TimeSpan:Regular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-//[TimeSpan:Regular] ||| [Unit:Singular] del [TimeSpan:Regular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-//[TimeSpan:Regular] ||| [Unit:Singular] de la [TimeSpan:Regular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
 
 // P. ej., "Día de Navidad"
 [TimeSpan:Regular] ||| [TimeSpan:Regular] [Unit:Singular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-//[TimeSpan:Regular] ||| [TimeSpan:Regular] de [Unit:Singular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-//[TimeSpan:Regular] ||| [TimeSpan:Regular] del [Unit:Singular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
-//[TimeSpan:Regular] ||| [TimeSpan:Regular] de la [Unit:Singular] ||| FindEnclosing [TimeSpan:Regular] [Unit:Singular] ||| 1.0
 
 // P. ej., "la tarde de ayer"
 [TimeSpan:Regular] ||| [FieldValue:PartOfDay] [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:PartOfDay] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:PartOfDay] de [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:PartOfDay] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:PartOfDay] del [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:PartOfDay] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:PartOfDay] de la [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:PartOfDay] ||| 1.0
 
 // P. ej., "invierno de 1994", "el tercer trimestre de este año"
 [TimeSpan:Regular] ||| [FieldValue:Partial] [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] del [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de la [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-
-// P. ej., "el tercer trimestre de este año"
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] del [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
-//[TimeSpan:Regular] ||| [FieldValue:Partial] de la [TimeSpan:Regular] ||| FindEnclosed [TimeSpan:Regular] [FieldValue:Partial] ||| 1.0
 
 // =====================================================
-// 32. Modificadores de TimeSpans // Time span modifiers
+// 31. Modificadores de TimeSpans // Time span modifiers
 // =====================================================
-[TimeSpan:Regular] ||| fin [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
-[TimeSpan:Regular] ||| final [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
-[TimeSpan:Regular] ||| finales [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
-[TimeSpan:Regular] ||| últimos [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
-[TimeSpan:Regular] ||| fin [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
-[TimeSpan:Regular] ||| final [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
-[TimeSpan:Regular] ||| finales [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
-[TimeSpan:Regular] ||| últimos [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
-
-[TimeSpan:Regular] ||| mitad [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) MID ||| 1.0
-[TimeSpan:Regular] ||| a mediados [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) MID ||| 1.0
-[TimeSpan:Regular] ||| mitad [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] MID ||| 1.0
-[TimeSpan:Regular] ||| a mediados [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] MID ||| 1.0
-
+// P. ej., "inicio del mes"
 [TimeSpan:Regular] ||| inicio [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
 [TimeSpan:Regular] ||| principio [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
 [TimeSpan:Regular] ||| principios [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
 [TimeSpan:Regular] ||| comienzo [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
 [TimeSpan:Regular] ||| comienzos [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
-[TimeSpan:Regular] ||| primeros [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
+[TimeSpan:Regular] ||| primeros de [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) START ||| 1.0
 [TimeSpan:Regular] ||| inicio [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
 [TimeSpan:Regular] ||| principio [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
 [TimeSpan:Regular] ||| principios [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
 [TimeSpan:Regular] ||| comienzo [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
 [TimeSpan:Regular] ||| comienzos [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
-[TimeSpan:Regular] ||| primeros [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
+[TimeSpan:Regular] ||| primeros de [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] START ||| 1.0
 
+// P. ej., "a mediados de mes"
+[TimeSpan:Regular] ||| mitad [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) MID ||| 1.0
+[TimeSpan:Regular] ||| mediados [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) MID ||| 1.0
+[TimeSpan:Regular] ||| mitad [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] MID ||| 1.0
+[TimeSpan:Regular] ||| mediados [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] MID ||| 1.0
+
+// P. ej., "finales de año"
+[TimeSpan:Regular] ||| fin [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
+[TimeSpan:Regular] ||| final [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
+[TimeSpan:Regular] ||| finales [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
+[TimeSpan:Regular] ||| últimos de [Unit] ||| WithModifier ( TimeSpan FindEnclosing PRESENT [Unit] ) END ||| 1.0
+[TimeSpan:Regular] ||| fin [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
+[TimeSpan:Regular] ||| final [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
+[TimeSpan:Regular] ||| finales [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
+[TimeSpan:Regular] ||| últimos de [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] END ||| 1.0
+
+// P. ej., "alrededor del mes pasado"
 [TimeSpan:Regular] ||| casi [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| sobre [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| cerca [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
-[TimeSpan:Regular] ||| alrededor de [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
+[TimeSpan:Regular] ||| unos [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
+[TimeSpan:Regular] ||| unas [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
+[TimeSpan:Regular] ||| apenas [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
+[TimeSpan:Regular] ||| alrededor [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| en torno [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| más o menos [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| [TimeSpan:Regular] más o menos ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| aproximadamente [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 [TimeSpan:Regular] ||| [TimeSpan:Regular] aproximadamente ||| WithModifier [TimeSpan:Regular] APPROX ||| 1.0
 
+// P. ej., "antes del último mes"
+[TimeSpan:Regular] ||| antes [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] BEFORE ||| 1.0
+
+// P. ej., "después de este próximo mes"
 [TimeSpan:Regular] ||| después [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] AFTER ||| 1.0
 
+// P. ej., "hasta diciembre del año siguiente"
+[TimeSpan:Regular] ||| hasta [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
+[TimeSpan:Regular] ||| [TimeSpan:Regular] o antes ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
+[TimeSpan:Regular] ||| [TimeSpan:Regular] o menos ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
+[TimeSpan:Regular] ||| como mucho [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
+[TimeSpan:Regular] ||| [TimeSpan:Regular] como mucho ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
+
+// P. ej., "desde el primer lunes del mes que viene"
 [TimeSpan:Regular] ||| desde [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_AFTER ||| 1.0
 [TimeSpan:Regular] ||| a partir [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_AFTER ||| 1.0
 [TimeSpan:Regular] ||| [TimeSpan:Regular] o más ||| WithModifier [TimeSpan:Regular] ON_OR_AFTER ||| 1.0
@@ -841,14 +825,8 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Regular] ||| al menos [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_AFTER ||| 1.0
 [TimeSpan:Regular] ||| [TimeSpan:Regular] al menos ||| WithModifier [TimeSpan:Regular] ON_OR_AFTER ||| 1.0
 
-[TimeSpan:Regular] ||| hasta [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
-[TimeSpan:Regular] ||| [TimeSpan:Regular] o antes ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
-[TimeSpan:Regular] ||| [TimeSpan:Regular] o menos ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
-[TimeSpan:Regular] ||| como mucho [TimeSpan:Regular] ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
-[TimeSpan:Regular] ||| [TimeSpan:Regular] como mucho ||| WithModifier [TimeSpan:Regular] ON_OR_BEFORE ||| 1.0
-
 // ==========================================================================================
-// 33. Campos usados solo en los conjuntos de TimeSpans // Fields used only by time span sets
+// 32. Campos usados solo en los conjuntos de TimeSpans // Fields used only by time span sets
 // ==========================================================================================
 [FieldValue:Unspecified] ||| mañanas ||| MORNING_OF_DAY 1 ||| 1.0
 [FieldValue:Unspecified] ||| tardes ||| AFTERNOON_OF_DAY 1 ||| 1.0
@@ -864,16 +842,19 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:Unspecified] ||| cuartos trimestres ||| QUARTER_OF_YEAR 4 ||| 1.0
 
 // ============================================
-// 34. Conjuntos de TimeSpans // Time span sets
+// 33. Conjuntos de TimeSpans // Time span sets
 // ============================================
-[TimeSpanSet] ||| [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0
-
-// P. ej., "cada jueves"
+// P. ej., "cada otoño", "todos los jueves"
 [TimeSpanSet] ||| cada [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
-
-// P. ej., "noches de jueves"
+[TimeSpanSet] ||| por [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
+[TimeSpanSet] ||| una vez [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
+[TimeSpanSet] ||| una vez cada [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
+[TimeSpanSet] ||| una vez por [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
 [TimeSpanSet] ||| todos [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
 [TimeSpanSet] ||| todas [FieldValue:Partial] ||| Simple [FieldValue:Partial] ||| 1.0
+
+// P. ej., "primaveras"
+[TimeSpanSet] ||| [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0
 
 // P. ej., "noches de jueves"
 [TimeSpanSet] ||| [FieldValue:Unspecified] [FieldValue:Partial] ||| Simple ( FieldValue [FieldValue:Partial] [FieldValue:Unspecified] ) ||| 1.0
@@ -881,3 +862,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // P. ej., "los últimos tres veranos"
 [TimeSpanSet] ||| últimos [Int] [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0
 [TimeSpanSet] ||| últimas [Int] [FieldValue:Unspecified] ||| Simple [FieldValue:Unspecified] ||| 1.0
+
+// P. ej., "todas las mañanas"
+[TimeSpanSet] ||| todos [TimeSpanSet] ||| [TimeSpanSet] ||| 1.0
+[TimeSpanSet] ||| todas [TimeSpanSet] ||| [TimeSpanSet] ||| 1.0

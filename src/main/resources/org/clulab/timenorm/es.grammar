@@ -275,11 +275,11 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // =====================================================
 // 10. Trimestres del año // Fiscal quarters of the year
 // =====================================================
-//[FieldValue:QuarterOfYear] ||| primer trimestre ||| QUARTER_OF_YEAR 1 ||| 1.0
+[FieldValue:QuarterOfYear] ||| primer trimestre ||| QUARTER_OF_YEAR 1 ||| 1.0
 [FieldValue:QuarterOfYear] ||| segundo trimestre ||| QUARTER_OF_YEAR 2 ||| 1.0
 [FieldValue:QuarterOfYear] ||| tercer trimestre ||| QUARTER_OF_YEAR 3 ||| 1.0
 [FieldValue:QuarterOfYear] ||| cuarto trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
-//[FieldValue:QuarterOfYear] ||| último trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
+[FieldValue:QuarterOfYear] ||| último trimestre ||| QUARTER_OF_YEAR 4 ||| 1.0
 
 // =============================================
 // 11. Estaciones del año // Seasons of the year
@@ -310,7 +310,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:MonthDay] ||| [FieldValue:NamedDay] ||| [FieldValue:NamedDay] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:OrdinalDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:OrdinalDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
-//[FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] de [FieldValue:MonthOfYear] ||| [FieldValue:MonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:NumericDayOfMonth] [FieldValue:NumericMonthOfYear] ||| [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| [FieldValue:DayOfWeek] [FieldValue:MonthDay] ||| 1.0
 
@@ -363,6 +362,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 
 // P. ej., "un periodo de tres años"
 [Period] ||| un periodo de [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
+[Period] ||| un período de [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
 
 // =======================================================================
 // 18. Periodos de tiempos fraccionados // Periods with fractional amounts
@@ -392,7 +392,9 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| poco tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| mucho tiempo ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| corto periodo ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| corto período ||| Unspecified UNSPECIFIED ||| 1.0
 [Period] ||| largo periodo ||| Unspecified UNSPECIFIED ||| 1.0
+[Period] ||| largo período ||| Unspecified UNSPECIFIED ||| 1.0
 
 [Period] ||| algo [Unit] ||| Unspecified [Unit] ||| 1.0
 [Period] ||| algún [Unit] ||| Unspecified [Unit] ||| 1.0

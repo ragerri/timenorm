@@ -14,9 +14,9 @@ object Scorer {
 
     // Indicate the names for the gold standard, normalization and error files.
     // Input files shoud be in "{expression}\t{type}\t{normalization}\n" format.
-    val goldOutFile = "%s/gold-standard.txt".format(outDir)
-    val normOutFile = "%s/normalizations.txt".format(outDir)
-    val errorFile = "%s/errors.txt".format(outDir)
+    val goldOutFile = s"$outDir/gold-standard.txt"
+    val normOutFile = s"$outDir/normalizations.txt"
+    val errorFile = s"$outDir/errors.txt"
 
     val errorWriter=new PrintWriter(new File(errorFile))
 
@@ -41,23 +41,23 @@ object Scorer {
         // If both normalizations are the same, sum 1 to sumNorm.
         if ( gold(1) == norm(1) ) { sumNorm += 1 }
         // If not, write the error in errorFile.
-        else { errorWriter.write("%s | %s\n".format(goldTimex, norm(1))) }
+        else { errorWriter.write(s"$goldTimex | ${norm(1)}\n") }
       }
       // If there is no normalization, write the timex in errorFile.
-      else { errorWriter.write("%s\n".format(goldTimex)) }
+      else { errorWriter.write(s"$goldTimex\n") }
     }
 
     errorWriter.close()
 
     var sumErrors = sumGold - sumNorm
-    var accuracy = sumNorm.toFloat / sumGold
+    var accuracy = sumNorm.toFloat * 100 / sumGold
 
     // Print the final results and the list of mistaken timexes.
     println(f"""\n
-                |Number of timexes:         $sumGold
-                |Correct normalizations:    $sumNorm
-                |Incorrect normalizations:  $sumErrors
-                |Accuracy:                  $accuracy\n""".stripMargin)
+                |Number of timexes:         $sumGold%6d
+                |Correct normalizations:    $sumNorm%6d
+                |Incorrect normalizations:  $sumErrors%6d
+                |Accuracy:                  $accuracy%6.2f\n""".stripMargin)
   }
 
   def getGoldStandard(inDir:String, goldOutFile:String) {
@@ -69,7 +69,7 @@ object Scorer {
       for (timex <- timexList) {
         val expression = timex.split("\t").head
         val normalization = timex.split("\t").last
-        goldWriter.write("%s\t%s\n".format(expression, normalization))
+        goldWriter.write(s"$expression\t$normalization\n")
       }
     }
     goldWriter.close()
@@ -126,13 +126,13 @@ object Scorer {
         parser.parse(expression, anchor) match {
           // If the parser fails, write only the expression.
           case Failure(temporal) =>
-            println("%s".format(expression))
-            normWriter.write("%s\n".format(expression))
+            println(s"$expression")
+            normWriter.write(s"$expression\n")
           // If the parser successes, write the expression and normalization.
           case Success(temporal) =>
             val normalization = temporal.timeMLValue
-            println("%s\t%s".format(expression, normalization))
-            normWriter.write("%s\t%s\n".format(expression, normalization))
+            println(s"$expression\t$normalization")
+            normWriter.write(s"$expression\t$normalization\n")
         }
       }
     }

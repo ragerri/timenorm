@@ -1,8 +1,8 @@
 ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 
-// ===================================================================================
-// 1. Formas que se pueden pasar por alto // Expressions that can sometimes be ignored
-// ===================================================================================
+// =========================================================================
+// 1. Formas que se pueden pasar por alto // Expressions that can be ignored
+// =========================================================================
 [Nil] ||| un ||| ||| 1.0
 // [Nil] ||| una ||| ||| 1.0
 [Nil] ||| el ||| ||| 1.0
@@ -114,6 +114,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Unit:Singular] ||| minuto ||| MINUTES ||| 1.0
 [Unit:Singular] ||| hora ||| HOURS ||| 1.0
 [Unit:Singular] ||| día ||| DAYS ||| 1.0
+[Unit:Singular] ||| jornada ||| DAYS ||| 1.0
 [Unit:Singular] ||| semana ||| WEEKS ||| 1.0
 [Unit:Singular] ||| mes ||| MONTHS ||| 1.0
 [Unit:Singular] ||| trimestre ||| QUARTER_YEARS ||| 1.0
@@ -127,6 +128,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Unit:Plural] ||| minutos ||| MINUTES ||| 1.0
 [Unit:Plural] ||| horas ||| HOURS ||| 1.0
 [Unit:Plural] ||| días ||| DAYS ||| 1.0
+[Unit:Plural] ||| jornadas ||| DAYS ||| 1.0
 [Unit:Plural] ||| semanas ||| WEEKS ||| 1.0
 [Unit:Plural] ||| meses ||| MONTHS ||| 1.0
 [Unit:Plural] ||| trimestres ||| QUARTER_YEARS ||| 1.0
@@ -343,6 +345,8 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [FieldValue:Year] ||| año [FieldValue:Year] ||| [FieldValue:Year] ||| 1.0
 [FieldValue:YearMonth] ||| [FieldValue:MonthOfYear] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthOfYear] ||| 1.0
 [FieldValue:YearMonthDay] ||| [FieldValue:MonthDay] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:MonthDay] ||| 1.0
+// P. ej., "2000-05-31" (común en los DCT)
+[FieldValue:YearMonthDay] ||| [FieldValue:Year] [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| [FieldValue:Year] [FieldValue:NumericMonthOfYear] [FieldValue:NumericDayOfMonth] ||| 1.0
 
 [FieldValue:Absolute] ||| [FieldValue:Year] ||| [FieldValue:Year] ||| 1.0
 [FieldValue:Absolute] ||| [FieldValue:QuarterOfYear] [FieldValue:Year] ||| [FieldValue:Year] [FieldValue:QuarterOfYear] ||| 1.0
@@ -453,10 +457,31 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // 21. Conjuntos de periodos // Period sets
 // ========================================
 [PeriodSet] ||| cada jornada ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
+[PeriodSet] ||| diario ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
+[PeriodSet] ||| diaria ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
+[PeriodSet] ||| diarios ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
+[PeriodSet] ||| diarias ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
 [PeriodSet] ||| diariamente ||| WithQuantifier ( Period Simple 1 DAYS ) EVERY ||| 1.0
+[PeriodSet] ||| semanal ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
+[PeriodSet] ||| semanales ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
 [PeriodSet] ||| semanalmente ||| WithQuantifier ( Period Simple 1 WEEKS ) EVERY ||| 1.0
+[PeriodSet] ||| mensual ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| mensuales ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
 [PeriodSet] ||| mensualmente ||| WithQuantifier ( Period Simple 1 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| bimensual ||| WithQuantifier ( Period Simple 2 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| bimensuales ||| WithQuantifier ( Period Simple 2 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| bimensualmente ||| WithQuantifier ( Period Simple 2 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| trimestral ||| WithQuantifier ( Period Simple 1 QUARTER_YEARS ) EVERY ||| 1.0
+[PeriodSet] ||| trimestrales ||| WithQuantifier ( Period Simple 1 QUARTER_YEARS ) EVERY ||| 1.0
 [PeriodSet] ||| trimestralmente ||| WithQuantifier ( Period Simple 1 QUARTER_YEARS ) EVERY ||| 1.0
+[PeriodSet] ||| cuatrimestral ||| WithQuantifier ( Period Simple 4 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| cuatrimestrales ||| WithQuantifier ( Period Simple 4 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| cuatrimestralmente ||| WithQuantifier ( Period Simple 4 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| semestral ||| WithQuantifier ( Period Simple 6 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| semestrales ||| WithQuantifier ( Period Simple 6 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| semestralmente ||| WithQuantifier ( Period Simple 6 MONTHS ) EVERY ||| 1.0
+[PeriodSet] ||| anual ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
+[PeriodSet] ||| anuales ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
 [PeriodSet] ||| anualmente ||| WithQuantifier ( Period Simple 1 YEARS ) EVERY ||| 1.0
 
 [PeriodSet] ||| cada [Period] ||| WithQuantifier [Period] EVERY ||| 1.0
@@ -476,6 +501,9 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // 23. TimeSpans que no se pueden combinar // Time spans that can't be combined
 // ============================================================================
 [TimeSpan:Solo] ||| pasado ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| pasada ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| pasados ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| pasadas ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| antes ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| anterior ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| anteriores ||| Simple PAST ||| 1.0
@@ -488,8 +516,10 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| reciente ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientes ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientemente ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| recién ||| Simple PAST ||| 1.0
 
 [TimeSpan:Solo] ||| presente ||| Simple PRESENT ||| 1.0
+[TimeSpan:Solo] ||| presentes ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actual ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actuales ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actualmente ||| Simple PRESENT ||| 1.0
@@ -505,6 +535,10 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| futura ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| futuros ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| futuras ||| Simple FUTURE ||| 1.0
+[TimeSpan:Solo] ||| próximo ||| Simple FUTURE ||| 1.0
+[TimeSpan:Solo] ||| próxima ||| Simple FUTURE ||| 1.0
+[TimeSpan:Solo] ||| próximos ||| Simple FUTURE ||| 1.0
+[TimeSpan:Solo] ||| próximas ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| próximamente ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| a partir de ahora ||| Simple FUTURE ||| 1.0
 [TimeSpan:Solo] ||| de ahora en adelante ||| Simple FUTURE ||| 1.0
@@ -571,6 +605,9 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // ===============================================
 [TimeSpan:Regular] ||| ahora ||| Simple PRESENT ||| 1.0
 [TimeSpan:Regular] ||| hoy ||| FindEnclosing PRESENT DAYS ||| 1.0
+[TimeSpan:Regular] ||| hoy [FieldValue:DayOfWeek] [Int] ||| FindEnclosing PRESENT DAYS ||| 1.0
+[TimeSpan:Regular] ||| hoy [FieldValue:PartialYearMonthDay] ||| FindEnclosing PRESENT DAYS ||| 1.0
+[TimeSpan:Regular] ||| hoy [FieldValue:YearMonthDay] ||| FindEnclosing PRESENT DAYS ||| 1.0
 [TimeSpan:Regular] ||| este mismo día ||| FindEnclosing PRESENT DAYS ||| 1.0
 
 // P. ej., "este año"
@@ -580,10 +617,14 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Regular] ||| esta [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 [TimeSpan:Regular] ||| actual [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 [TimeSpan:Regular] ||| [Unit:Singular] actual ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
+[TimeSpan:Regular] ||| presente [Unit:Singular] ||| FindEnclosing PRESENT [Unit:Singular] ||| 1.0
 
 // P. ej., "esta tarde"
 [TimeSpan:Regular] ||| este [FieldValue:Partial] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
 [TimeSpan:Regular] ||| esta [FieldValue:Partial] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| actual [FieldValue:Partial] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| [FieldValue:Partial] actual ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
+[TimeSpan:Regular] ||| presente [FieldValue:Partial] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [FieldValue:Partial] ) [FieldValue:Partial] ||| 1.0
 
 // P. ej., "enero de este año"
 [TimeSpan:Regular] ||| [FieldValue:Partial] de este [Unit] ||| FindEnclosed ( TimeSpan FindEnclosing PRESENT [Unit] ) [FieldValue:Partial] ||| 1.0
@@ -593,6 +634,12 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // 26. TimeSpans de pasado // Earlier time spans
 // =============================================
 [TimeSpan:Regular] ||| ayer ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| ayer [FieldValue:DayOfWeek] [Int] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| ayer [FieldValue:PartialYearMonthDay] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| ayer [FieldValue:YearMonthDay] ||| EndAtStartOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:AllowsThis] ||| anoche ||| FindEarlier PRESENT ( FieldValue NIGHT_OF_DAY 1 ) ||| 1.0
+[TimeSpan:Regular] ||| anteayer ||| EndAtStartOf ( TimeSpan MoveEarlier PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| antes de ayer ||| EndAtStartOf ( TimeSpan MoveEarlier PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
 
 // P. ej., "el pasado octubre"
 [TimeSpan:AllowsThis] ||| último [FieldValue:Partial] ||| FindEarlier PRESENT [FieldValue:Partial] ||| 1.0
@@ -662,6 +709,9 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 // 27. TimeSpans de futuro // Later time spans
 // ===========================================
 [TimeSpan:Regular] ||| mañana ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| mañana [FieldValue:DayOfWeek] [Int] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| mañana [FieldValue:PartialYearMonthDay] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
+[TimeSpan:Regular] ||| mañana [FieldValue:YearMonthDay] ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 1 DAYS ) ||| 1.0
 [TimeSpan:Regular] ||| pasado mañana ||| StartAtEndOf ( TimeSpan FindEnclosing PRESENT DAYS ) ( Period Simple 2 DAYS ) ||| 1.0
 
 // P. ej., "próximo martes"
@@ -701,6 +751,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Regular] ||| a la [Period] siguiente ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| dentro de [Period] ||| MoveLater PRESENT [Period] ||| 1.0
 [TimeSpan:Regular] ||| en [Period] ||| MoveLater PRESENT [Period] ||| 1.0
+[TimeSpan:Regular] ||| al cabo de [Period] ||| MoveLater PRESENT [Period] ||| 1.0
 
 // P. ej., "enero del próximo año"
 // [TimeSpan:Regular] ||| [FieldValue:Partial] del próximo [Unit] ||| FindEnclosed ( TimeSpan StartAtEndOf ( TimeSpan FindEnclosing PRESENT [Unit] ) ( Period Simple 1 [Unit] ) ) [FieldValue:Partial] ||| 1.0

@@ -14,10 +14,10 @@ import scala.collection.immutable.ListMap
  * A temporal object, such as a time span or a period.
  */
 sealed trait Temporal {
-  
+
   /**
    * The temporal object, formatted as a
-   * [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 value attribute]]. 
+   * [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 value attribute]].
    */
   val timeMLValue: String
 }
@@ -136,7 +136,7 @@ case class Period(
 }
 
 /**
- * Factory for creating [[Period]] instances. 
+ * Factory for creating [[Period]] instances.
  */
 object Period {
 
@@ -152,13 +152,13 @@ object Period {
 
   /**
    * Creates a period from a unit and a fractional amount.
-   * 
+   *
    * Only certain types of units that can naturally be divided into smaller units (e.g. 1 year is
    * 12 months) are supported.
-   * 
+   *
    * @param numerator The numerator of the fractional amount.
    * @param denominator The denominator of the fractional amount.
-   * @param unit The temporal unit for the period.  
+   * @param unit The temporal unit for the period.
    * @param modifier The modifier for the period.
    * @return A period representing the fractional amount
    */
@@ -180,7 +180,10 @@ object Period {
   }
 
   private final val smallerUnit = Map[TemporalUnit, (Int, TemporalUnit)](
+    CENTURIES -> (100, YEARS),
+    DECADES -> (10, YEARS),
     YEARS -> (12, MONTHS),
+    QUARTER_YEARS -> (3, MONTHS),
     MONTHS -> (30, DAYS),
     WEEKS -> (7, DAYS),
     DAYS -> (24, HOURS),
@@ -190,7 +193,7 @@ object Period {
 
 /**
  * An unanchored set of periods, such as "daily" or "two days a week".
- * 
+ *
  * @constructor Creates a period set from a period and various attributes.
  * @param period The base period of the period set.
  * @param modifier A modifier if the period set is not exact.
@@ -218,10 +221,10 @@ object PeriodSet {
    * @param unit An optional unit for the frequency.
    */
   case class Frequency(val times: Int, val unit: Option[TemporalUnit] = None) {
-    
+
     /**
      * Unifies this frequency with another frequency.
-     * 
+     *
      * Currently only allows identical frequencies to be unified.
      */
     def &(that: Frequency): Frequency = {
@@ -246,7 +249,7 @@ object PeriodSet {
 
     /**
      * Unifies this quantifier with another quantifier.
-     * 
+     *
      * Currently only allows identical quantifiers to be unified.
      */
     def &(that: Quantifier): Quantifier = {
@@ -258,7 +261,7 @@ object PeriodSet {
       }
     }
   }
-  
+
   /**
    * Provider of different of [[Quantifier]] instances.
    */
@@ -268,7 +271,7 @@ object PeriodSet {
      * The absence of a quantifier
      */
     case object None extends Quantifier(scala.None)
-    
+
     /**
      * A quantifier for the meaning of "every"
      */
@@ -286,10 +289,10 @@ object PeriodSet {
 
     /**
      * Gets the quantifier corresponding to a string value.
-     * 
+     *
      * @param timeMLValue A
      *        [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 quant attribute]]
-     *        string. 
+     *        string.
      * @return The quantifier for the given string.
      */
     def valueOf(timeMLValue: String): Quantifier = this.stringToQuantifier(timeMLValue)
@@ -318,7 +321,7 @@ case class TimeSpan(
    * The time span, formatted as a
    * [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 value attribute]]
    * if possible.
-   * 
+   *
    * Time spans that are impossible to represent in a TIMEX3 value (e.g. "the last three weeks")
    * will produce `None`.
    */
@@ -343,12 +346,12 @@ case class TimeSpan(
       }
     }
   }
-  
+
   /**
    * The time span, formatted as a
    * [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 value attribute]]
    * if possible.
-   * 
+   *
    * Time spans that are impossible to represent in a TIMEX3 value (e.g. "the last three weeks")
    * will produce the TIMEX3 value for their period (e.g. "three weeks").
    */
@@ -359,20 +362,20 @@ case class TimeSpan(
  * Factory for [[TimeSpan]] instances.
  */
 object TimeSpan {
-  
+
   /**
-   * The time point representing an unspecified start point.  
+   * The time point representing an unspecified start point.
    */
   final val unspecifiedStart = ZonedDateTime.of(LocalDateTime.MIN, ZoneId.of("Z"))
-  
+
   /**
-   * The time point representing an unspecified end point. 
+   * The time point representing an unspecified end point.
    */
   final val unspecifiedEnd = ZonedDateTime.of(LocalDateTime.MAX, ZoneId.of("Z"))
-  
+
   /**
    * Creates a [[TimeSpan]] from a single day.
-   * 
+   *
    * @param year The time span's year.
    * @param month The time span's month.
    * @param day The time span's day.
@@ -382,10 +385,10 @@ object TimeSpan {
     val start = ZonedDateTime.of(LocalDateTime.of(year, month, day, 0, 0), ZoneId.of("Z"))
     this.startingAt(start, Period(Map(DAYS -> 1)), Modifier.Exact)
   }
-  
+
   /**
    * Creates a [[TimeSpan]] from a single second.
-   * 
+   *
    * @param year The time span's year.
    * @param month The time span's month.
    * @param day The time span's day.
@@ -399,10 +402,10 @@ object TimeSpan {
     val start = ZonedDateTime.of(localStart, ZoneId.of("Z"))
     this.startingAt(start, Period(Map(SECONDS -> 1)), Modifier.Exact)
   }
-  
+
   /**
    * Creates a [[TimeSpan]] from a TimeML value string.
-   * 
+   *
    * @param value A [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 value attribute]]
    *        string. The value must be a date/time, not a period/duration.
    * @return The time span corresponding to the TimeML value.
@@ -460,7 +463,7 @@ object TimeSpan {
       case (dateTime, (field, value)) => dateTime.`with`(field, value)
     }
 
-    // truncate the date-time based on the smallest field's base unit 
+    // truncate the date-time based on the smallest field's base unit
     val minField = fieldValues.keySet.minBy(_.getBaseUnit().getDuration())
     val minUnit = minField.getBaseUnit()
     val start = this.truncate(nonTruncatedStart, minUnit)
@@ -473,13 +476,13 @@ object TimeSpan {
     // create a time span of exactly one unit in size
     this.startingAt(adjustedStart, Period(Map(minUnit -> 1)), Modifier.Exact)
   }
-  
+
   /**
    * Creates a [[TimeSpan]] from a start point and a period.
-   * 
+   *
    * @param start The start point of the time span.
    * @param period The duration of the time span.
-   * @param modifier The modifier of the time span, or [[Modifier.Exact]] if the span is exact. 
+   * @param modifier The modifier of the time span, or [[Modifier.Exact]] if the span is exact.
    * @return A time span starting at the given point and lasting for the given period.
    */
   def startingAt(start: ZonedDateTime, period: Period, modifier: Modifier): TimeSpan = {
@@ -488,7 +491,7 @@ object TimeSpan {
 
   /**
    * Creates a [[TimeSpan]] from an end point and a period.
-   * 
+   *
    * @param end The end point of the time span.
    * @param period The duration of the time span.
    * @param modifier The modifier of the time span, or [[Modifier.Exact]] if the span is exact.
@@ -605,7 +608,7 @@ case class TimeSpanSet(fields: Map[TemporalField, Int]) extends Temporal {
 
 
 private object TimeSpanSet {
-  
+
   private val fieldToDayFieldsToDisplay = Map[TemporalField, Seq[TemporalField]](
     CENTURY -> Seq(CENTURY),
     DECADE -> Seq(DECADE),
@@ -620,7 +623,7 @@ private object TimeSpanSet {
     WEEKEND_OF_WEEK -> Seq(YEAR, ISO_WEEK.OF_YEAR, WEEKEND_OF_WEEK),
     DAY_OF_WEEK -> Seq(YEAR, ISO_WEEK.OF_YEAR, DAY_OF_WEEK),
     DAY_OF_MONTH -> Seq(YEAR, MONTH_OF_YEAR, DAY_OF_MONTH))
-    
+
   private val fieldToTimeFieldsToDisplay = Map[TemporalField, Seq[TemporalField]](
     MORNING_OF_DAY -> Seq(MORNING_OF_DAY),
     AFTERNOON_OF_DAY -> Seq(AFTERNOON_OF_DAY),
@@ -644,11 +647,11 @@ private object TimeSpanSet {
 
 /**
  * A temporal modifier, such as "approximately" or "less than".
- * 
- * Modifier types are provided by the [[Modifier$ Modifier]] companion object. 
- * 
+ *
+ * Modifier types are provided by the [[Modifier$ Modifier]] companion object.
+ *
  * @constructor Creates a new temporal modifier.
- * @param timeMLValueOption The string value of the modifier or None for no modifier. 
+ * @param timeMLValueOption The string value of the modifier or None for no modifier.
  */
 abstract class Modifier(val timeMLValueOption: Option[String]) {
 
@@ -709,10 +712,10 @@ object Modifier {
 
     /**
      * Gets the modifier corresponding to a string value.
-     * 
+     *
      * @param timeMLValue A
      *        [[http://timeml.org/site/publications/timeMLdocs/timeml_1.2.1.html#timex3 TIMEX3 mod attribute]]
-     *        string. 
+     *        string.
      * @return The modifier for the given string.
      */
   def valueOf(timeMLValue: String): Modifier = this.stringToModifier(timeMLValue)

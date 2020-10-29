@@ -41,10 +41,10 @@ object Scorer {
         // If both normalizations are the same, sum 1 to sumNorm.
         if ( gold(1) == norm(1) ) { sumNorm += 1 }
         // If not, write the error in errorFile.
-        else { errorWriter.write(s"$goldTimex | ${norm(1)}\n") }
+        else { errorWriter.write(s"${gold(0)}:\t${gold(1)}\t${norm(1)}\n") }
       }
       // If there is no normalization, write the timex in errorFile.
-      else { errorWriter.write(s"$goldTimex\n") }
+      else { errorWriter.write(s"${gold(0)}:\t${gold(1)}\n") }
     }
 
     errorWriter.close()

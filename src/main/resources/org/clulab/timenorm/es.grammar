@@ -16,7 +16,6 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Nil] ||| en ||| ||| 1.0
 [Nil] ||| mismo ||| ||| 1.0
 [Nil] ||| misma ||| ||| 1.0
-[Nil] ||| más ||| ||| 1.0
 [Nil] ||| . ||| ||| 1.0
 [Nil] ||| - ||| ||| 1.0
 [Nil] ||| / ||| ||| 1.0
@@ -426,6 +425,8 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| últimas [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
 [Period] ||| estos [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
 [Period] ||| estas [Int] [Unit] ||| Simple [Int] [Unit] ||| 1.0
+[Period] ||| [Int] [Unit] más ||| Simple [Int] [Unit] ||| 1.0
+[Period] ||| [Int] [Unit] menos ||| Simple [Int] [Unit] ||| 1.0
 
 [Period] ||| segundo [Unit] ||| Simple [Unit] ||| 1.0
 [Period] ||| segunda [Unit] ||| Simple [Unit] ||| 1.0
@@ -513,7 +514,7 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [Period] ||| menos de [Period] ||| WithModifier [Period] LESS_THAN ||| 1.0
 [Period] ||| inferior a [Period] ||| WithModifier [Period] LESS_THAN ||| 1.0
 
-// [Period] ||| más de [Period] ||| WithModifier [Period] MORE_THAN ||| 1.0
+[Period] ||| más de [Period] ||| WithModifier [Period] MORE_THAN ||| 1.0
 [Period] ||| superior a [Period] ||| WithModifier [Period] MORE_THAN ||| 1.0
 
 [Period] ||| al menos [Period] ||| WithModifier [Period] EQUAL_OR_MORE ||| 1.0
@@ -605,11 +606,26 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| reciente ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientes ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recientemente ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más reciente ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más recientes ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más recientemente ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos reciente ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos recientes ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos recientemente ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| recién ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| antiguo ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| antigua ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| antiguos ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| antiguas ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más antiguo ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más antigua ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más antiguos ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| más antiguas ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos antiguo ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos antigua ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos antiguos ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| menos antiguas ||| Simple PAST ||| 1.0
+[TimeSpan:Solo] ||| antiguamente ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| entonces ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| aquel entonces ||| Simple PAST ||| 1.0
 [TimeSpan:Solo] ||| ese momento ||| Simple PAST ||| 1.0
@@ -626,6 +642,10 @@ ROOTS [Period] [PeriodSet] [TimeSpan] [TimeSpanSet]
 [TimeSpan:Solo] ||| presentes ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actual ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actuales ||| Simple PRESENT ||| 1.0
+[TimeSpan:Solo] ||| nás actual ||| Simple PRESENT ||| 1.0
+[TimeSpan:Solo] ||| más actuales ||| Simple PRESENT ||| 1.0
+[TimeSpan:Solo] ||| menos actual ||| Simple PRESENT ||| 1.0
+[TimeSpan:Solo] ||| menos actuales ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actualmente ||| Simple PRESENT ||| 1.0
 [TimeSpan:Solo] ||| actualidad ||| Simple PRESENT ||| 1.0
 // [TimeSpan:Solo] ||| ya ||| Simple PRESENT ||| 1.0
